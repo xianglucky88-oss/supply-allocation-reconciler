@@ -1,0 +1,20 @@
+{
+  "demands": [
+    {
+      "order": "O1",
+      "priority": 1,
+      "qty": 70
+    },
+    {
+      "order": "O2",
+      "priority": 2,
+      "qty": 50
+    }
+  ],
+  "inventory": [
+    {
+      "sku": "S1",
+      "qty": 100
+    }
+  ]
+}
