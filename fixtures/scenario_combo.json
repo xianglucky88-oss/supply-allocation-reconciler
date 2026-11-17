@@ -1,0 +1,220 @@
+{
+  "as_of": 100,
+  "strategy": "hierarchical",
+  "rule_version": "v2",
+  "plants_offline": [],
+  "batches": [
+    {
+      "batch_id": "B1",
+      "plant": "P1",
+      "sku": "S1",
+      "qty_on_hand": 60,
+      "available_at": 0,
+      "expires_at": 200,
+      "reservation_class": "gold"
+    },
+    {
+      "batch_id": "B2",
+      "plant": "P2",
+      "sku": "S1",
+      "qty_on_hand": 40,
+      "available_at": 0,
+      "expires_at": 300,
+      "reservation_class": "standard"
+    },
+    {
+      "batch_id": "B3",
+      "plant": "P2",
+      "sku": "S2",
+      "qty_on_hand": 50,
+      "available_at": 10,
+      "expires_at": null,
+      "reservation_class": "standard"
+    },
+    {
+      "batch_id": "B4",
+      "plant": "P3",
+      "sku": "S1",
+      "qty_on_hand": 100,
+      "available_at": 0,
+      "expires_at": null,
+      "reservation_class": "standard"
+    },
+    {
+      "batch_id": "B5",
+      "plant": "P1",
+      "sku": "S3",
+      "qty_on_hand": 30,
+      "available_at": 0,
+      "expires_at": 90,
+      "reservation_class": "standard"
+    }
+  ],
+  "shipments": [
+    {
+      "shipment_id": "T1",
+      "plant": "P1",
+      "sku": "S1",
+      "qty_planned": 50,
+      "eta": 120,
+      "reservation_class": "gold",
+      "qty_received": 20
+    },
+    {
+      "shipment_id": "T2",
+      "plant": "P2",
+      "sku": "S2",
+      "qty_planned": 40,
+      "eta": 80,
+      "reservation_class": "standard",
+      "qty_received": 0
+    }
+  ],
+  "demands": [
+    {
+      "order": "O1",
+      "sku": "S1",
+      "qty": 80,
+      "priority": 1,
+      "need_date": 110,
+      "plant_pref": ["P1", "P2"],
+      "reservation_class": "gold"
+    },
+    {
+      "order": "O2",
+      "sku": "S1",
+      "qty": 30,
+      "priority": 2,
+      "need_date": 150,
+      "plant_pref": ["P2"],
+      "reservation_class": "standard"
+    },
+    {
+      "order": "O3",
+      "sku": "S2",
+      "qty": 70,
+      "priority": 3,
+      "need_date": 130,
+      "plant_pref": ["P2"],
+      "reservation_class": "standard"
+    },
+    {
+      "order": "O4",
+      "sku": "S1",
+      "qty": 25,
+      "priority": 4,
+      "need_date": 105,
+      "plant_pref": ["P1"],
+      "reservation_class": "standard"
+    },
+    {
+      "order": "O5",
+      "sku": "S3",
+      "qty": 20,
+      "priority": 2,
+      "need_date": 100,
+      "plant_pref": ["P1"],
+      "reservation_class": "standard"
+    }
+  ],
+  "rule_versions": [
+    {
+      "version": "v1",
+      "created_at": 1,
+      "reservations": [
+        {"sku": "S1", "reservation_class": "gold", "allow_relaxation": false}
+      ],
+      "substitutions": [
+        {"from_sku": "S2", "to_sku": "S1", "rank": 1, "allowed_classes": ["standard"]}
+      ]
+    },
+    {
+      "version": "v2",
+      "created_at": 50,
+      "reservations": [
+        {"sku": "S1", "reservation_class": "gold", "allow_relaxation": false},
+        {"sku": "S1", "reservation_class": "standard", "allow_relaxation": false}
+      ],
+      "substitutions": [
+        {"from_sku": "S2", "to_sku": "S1", "rank": 1, "allowed_classes": ["standard"]},
+        {"from_sku": "S3", "to_sku": "S1", "rank": 2, "allowed_classes": []}
+      ]
+    }
+  ],
+  "commitments": [
+    {
+      "order": "O1",
+      "lines": [
+        {
+          "batch_id": "B1",
+          "qty": 60,
+          "sku": "S1",
+          "layer": "preferred",
+          "notified_at": 40
+        }
+      ]
+    },
+    {
+      "order": "O4",
+      "lines": [
+        {
+          "batch_id": "T1",
+          "qty": 25,
+          "sku": "S1",
+          "layer": "preferred",
+          "notified_at": 45
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "E1",
+      "type": "shipment.partial_arrival",
+      "occurred_at": 60,
+      "payload": {"shipment_id": "T1", "qty": 20}
+    },
+    {
+      "event_id": "E2",
+      "type": "shipment.delayed",
+      "occurred_at": 70,
+      "payload": {"shipment_id": "T1", "eta": 160}
+    },
+    {
+      "event_id": "E3",
+      "type": "shipment.partial_arrival",
+      "occurred_at": 75,
+      "payload": {"shipment_id": "T2", "qty": 15}
+    },
+    {
+      "event_id": "E4",
+      "type": "batch.adjusted",
+      "occurred_at": 80,
+      "payload": {"batch_id": "B3", "qty_on_hand": 25}
+    },
+    {
+      "event_id": "E5",
+      "type": "demand.cancelled",
+      "occurred_at": 85,
+      "payload": {"order": "O5"}
+    },
+    {
+      "event_id": "E6",
+      "type": "plant.offline",
+      "occurred_at": 90,
+      "payload": {"plant": "P3"}
+    },
+    {
+      "event_id": "E7",
+      "type": "batch.expired",
+      "occurred_at": 95,
+      "payload": {"batch_id": "B5"}
+    },
+    {
+      "event_id": "E1",
+      "type": "shipment.partial_arrival",
+      "occurred_at": 62,
+      "payload": {"shipment_id": "T1", "qty": 99}
+    }
+  ]
+}
