@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 from supply_allocation_reconciler.pipeline import run
-from supply_allocation_reconciler.parser import load_records
+from supply_allocation_reconciler.parser import load_records, load_inventory
 from supply_allocation_reconciler.engine import calculate
 
 def fixture():
@@ -13,7 +13,8 @@ class TestCore(unittest.TestCase):
         payload = fixture()
         rows = load_records(payload)
         self.assertTrue(rows)
-        data = calculate(rows, payload)
+        inventory = load_inventory(payload)
+        data = calculate(rows, inventory)
         self.assertIsInstance(data, dict)
         self.assertTrue(data)
         result = run(payload)

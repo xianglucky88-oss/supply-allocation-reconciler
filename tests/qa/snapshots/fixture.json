@@ -1,0 +1,55 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "O1",
+        "priority": 1,
+        "qty": 70
+      },
+      {
+        "order": "O2",
+        "priority": 2,
+        "qty": 50
+      }
+    ],
+    "inventory": [
+      {
+        "qty": 100,
+        "sku": "S1"
+      }
+    ]
+  },
+  "name": "fixture",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 70,
+        "order": "O1",
+        "requested": 70
+      },
+      {
+        "allocated": 30,
+        "order": "O2",
+        "requested": 50
+      }
+    ],
+    "inventory_by_sku": [
+      {
+        "allocated": 100,
+        "received": 100,
+        "remaining": 0,
+        "sku": "S1"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 0,
+    "status": "ok",
+    "unmet": [
+      {
+        "order": "O2",
+        "reason": "insufficient_inventory",
+        "unmet": 20
+      }
+    ]
+  }
+}

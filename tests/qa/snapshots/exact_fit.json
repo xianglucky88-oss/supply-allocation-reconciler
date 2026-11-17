@@ -1,0 +1,49 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "O1",
+        "priority": 1,
+        "qty": 20
+      },
+      {
+        "order": "O2",
+        "priority": 2,
+        "qty": 30
+      }
+    ],
+    "inventory": [
+      {
+        "qty": 50,
+        "sku": "S1"
+      }
+    ]
+  },
+  "name": "exact_fit",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 20,
+        "order": "O1",
+        "requested": 20
+      },
+      {
+        "allocated": 30,
+        "order": "O2",
+        "requested": 30
+      }
+    ],
+    "inventory_by_sku": [
+      {
+        "allocated": 50,
+        "received": 50,
+        "remaining": 0,
+        "sku": "S1"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 0,
+    "status": "ok",
+    "unmet": []
+  }
+}

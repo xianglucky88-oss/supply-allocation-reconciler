@@ -1,0 +1,70 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "OB",
+        "priority": 1,
+        "qty": 30
+      },
+      {
+        "order": "OA",
+        "priority": 1,
+        "qty": 30
+      },
+      {
+        "order": "OC",
+        "priority": 1,
+        "qty": 30
+      }
+    ],
+    "inventory": [
+      {
+        "qty": 50,
+        "sku": "S1"
+      }
+    ]
+  },
+  "name": "equal_priority_tiebreak",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 30,
+        "order": "OA",
+        "requested": 30
+      },
+      {
+        "allocated": 20,
+        "order": "OB",
+        "requested": 30
+      },
+      {
+        "allocated": 0,
+        "order": "OC",
+        "requested": 30
+      }
+    ],
+    "inventory_by_sku": [
+      {
+        "allocated": 50,
+        "received": 50,
+        "remaining": 0,
+        "sku": "S1"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 0,
+    "status": "ok",
+    "unmet": [
+      {
+        "order": "OB",
+        "reason": "insufficient_inventory",
+        "unmet": 10
+      },
+      {
+        "order": "OC",
+        "reason": "insufficient_inventory",
+        "unmet": 30
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "O1",
+        "priority": 1,
+        "qty": 0
+      },
+      {
+        "order": "O2",
+        "priority": 2,
+        "qty": 10
+      }
+    ],
+    "inventory": [
+      {
+        "qty": 10,
+        "sku": "S1"
+      }
+    ]
+  },
+  "name": "cancellation",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 0,
+        "order": "O1",
+        "requested": 0
+      },
+      {
+        "allocated": 10,
+        "order": "O2",
+        "requested": 10
+      }
+    ],
+    "inventory_by_sku": [
+      {
+        "allocated": 10,
+        "received": 10,
+        "remaining": 0,
+        "sku": "S1"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 0,
+    "status": "ok",
+    "unmet": []
+  }
+}

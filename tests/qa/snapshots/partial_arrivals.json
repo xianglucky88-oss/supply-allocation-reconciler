@@ -1,0 +1,53 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "O1",
+        "priority": 1,
+        "qty": 25
+      }
+    ],
+    "inventory": [
+      {
+        "qty": 10,
+        "sku": "S1"
+      },
+      {
+        "qty": 10,
+        "sku": "S1"
+      },
+      {
+        "qty": 8,
+        "sku": "S2"
+      }
+    ]
+  },
+  "name": "partial_arrivals",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 25,
+        "order": "O1",
+        "requested": 25
+      }
+    ],
+    "inventory_by_sku": [
+      {
+        "allocated": 20,
+        "received": 20,
+        "remaining": 0,
+        "sku": "S1"
+      },
+      {
+        "allocated": 5,
+        "received": 8,
+        "remaining": 3,
+        "sku": "S2"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 3,
+    "status": "ok",
+    "unmet": []
+  }
+}

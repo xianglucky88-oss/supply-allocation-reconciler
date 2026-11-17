@@ -1,0 +1,48 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "O1",
+        "priority": 1,
+        "qty": 10
+      },
+      {
+        "order": "O2",
+        "priority": 2,
+        "qty": 5
+      }
+    ],
+    "inventory": []
+  },
+  "name": "zero_inventory",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 0,
+        "order": "O1",
+        "requested": 10
+      },
+      {
+        "allocated": 0,
+        "order": "O2",
+        "requested": 5
+      }
+    ],
+    "inventory_by_sku": [],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 0,
+    "status": "ok",
+    "unmet": [
+      {
+        "order": "O1",
+        "reason": "insufficient_inventory",
+        "unmet": 10
+      },
+      {
+        "order": "O2",
+        "reason": "insufficient_inventory",
+        "unmet": 5
+      }
+    ]
+  }
+}

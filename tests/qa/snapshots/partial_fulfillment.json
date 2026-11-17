@@ -1,0 +1,55 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "O1",
+        "priority": 1,
+        "qty": 60
+      },
+      {
+        "order": "O2",
+        "priority": 2,
+        "qty": 60
+      }
+    ],
+    "inventory": [
+      {
+        "qty": 90,
+        "sku": "S1"
+      }
+    ]
+  },
+  "name": "partial_fulfillment",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 60,
+        "order": "O1",
+        "requested": 60
+      },
+      {
+        "allocated": 30,
+        "order": "O2",
+        "requested": 60
+      }
+    ],
+    "inventory_by_sku": [
+      {
+        "allocated": 90,
+        "received": 90,
+        "remaining": 0,
+        "sku": "S1"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 0,
+    "status": "ok",
+    "unmet": [
+      {
+        "order": "O2",
+        "reason": "insufficient_inventory",
+        "unmet": 30
+      }
+    ]
+  }
+}

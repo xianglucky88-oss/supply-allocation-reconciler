@@ -1,0 +1,55 @@
+{
+  "input": {
+    "demands": [
+      {
+        "order": "O1",
+        "priority": 1,
+        "qty": 2.5
+      },
+      {
+        "order": "O2",
+        "priority": 1,
+        "qty": 1.75
+      }
+    ],
+    "inventory": [
+      {
+        "qty": 3.25,
+        "sku": "S1"
+      }
+    ]
+  },
+  "name": "fractional_quantities",
+  "output": {
+    "allocations": [
+      {
+        "allocated": 2.5,
+        "order": "O1",
+        "requested": 2.5
+      },
+      {
+        "allocated": 0.75,
+        "order": "O2",
+        "requested": 1.75
+      }
+    ],
+    "inventory_by_sku": [
+      {
+        "allocated": 3.25,
+        "received": 3.25,
+        "remaining": 0.0,
+        "sku": "S1"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 0.0,
+    "status": "ok",
+    "unmet": [
+      {
+        "order": "O2",
+        "reason": "insufficient_inventory",
+        "unmet": 1.0
+      }
+    ]
+  }
+}

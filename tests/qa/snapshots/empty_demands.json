@@ -1,0 +1,37 @@
+{
+  "input": {
+    "demands": [],
+    "inventory": [
+      {
+        "qty": 40,
+        "sku": "S1"
+      },
+      {
+        "qty": 5,
+        "sku": "S2"
+      }
+    ]
+  },
+  "name": "empty_demands",
+  "output": {
+    "allocations": [],
+    "inventory_by_sku": [
+      {
+        "allocated": 0,
+        "received": 40,
+        "remaining": 40,
+        "sku": "S1"
+      },
+      {
+        "allocated": 0,
+        "received": 5,
+        "remaining": 5,
+        "sku": "S2"
+      }
+    ],
+    "project": "supply-allocation-reconciler",
+    "remaining_inventory": 45,
+    "status": "ok",
+    "unmet": []
+  }
+}
